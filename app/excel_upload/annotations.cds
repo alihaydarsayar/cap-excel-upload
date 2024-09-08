@@ -24,15 +24,24 @@ annotate service.Customers with @(
         },
     ]
 );
+
 annotate service.Customers with @(
+    UI.HeaderInfo : {
+        TypeName : 'Customer',
+        TypeNamePlural : 'Customers',
+        Title : {
+            $Type : 'UI.DataField',
+            Value : name
+        },
+        Description : {
+            $Type : 'UI.DataField',
+            Value : email
+        }
+    },
     UI.FieldGroup #GeneratedGroup1 : {
         $Type : 'UI.FieldGroupType',
         Data : [
-            {
-                $Type : 'UI.DataField',
-                Label : 'ID',
-                Value : ID,
-            },
+            
             {
                 $Type : 'UI.DataField',
                 Label : 'Name',
@@ -57,5 +66,31 @@ annotate service.Customers with @(
             Label : 'General Information',
             Target : '@UI.FieldGroup#GeneratedGroup1',
         },
+        // {
+        //     $Type : 'UI.ReferenceFacet',
+        //     ID : 'OrdersFacet',
+        //     Label : 'Orders',
+        //     Target : 'orders/@UI.LineItem',
+        // },
     ]
 );
+
+// annotate service.Orders with @(
+//     UI.LineItem : [
+//         {
+//             $Type : 'UI.DataField',
+//             Label : 'Order ID',
+//             Value : ID,
+//         },
+//         {
+//             $Type : 'UI.DataField',
+//             Label : 'Order Date',
+//             Value : orderDate,
+//         },
+//         {
+//             $Type : 'UI.DataField',
+//             Label : 'Total Amount',
+//             Value : totalAmount,
+//         },
+//     ]
+// );
