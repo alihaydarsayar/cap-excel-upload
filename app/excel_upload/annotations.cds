@@ -4,6 +4,11 @@ annotate service.Customers with @(
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
+            Label : 'ID',
+            Value : ID,
+        },
+        {
+            $Type : 'UI.DataField',
             Label : 'Name',
             Value : name,
         },
@@ -23,6 +28,11 @@ annotate service.Customers with @(
     UI.FieldGroup #GeneratedGroup1 : {
         $Type : 'UI.FieldGroupType',
         Data : [
+            {
+                $Type : 'UI.DataField',
+                Label : 'ID',
+                Value : ID,
+            },
             {
                 $Type : 'UI.DataField',
                 Label : 'Name',
