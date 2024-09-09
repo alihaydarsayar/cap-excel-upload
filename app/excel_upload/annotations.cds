@@ -1,96 +1,117 @@
-using UploadExcelSrv as service from '../../srv/OrderUpload-Srv';
 
-annotate service.Customers with @(
-    UI.LineItem : [
-        {
-            $Type : 'UI.DataField',
-            Label : 'ID',
-            Value : ID,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'Name',
-            Value : name,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'Email',
-            Value : email,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'Phone Number',
-            Value : phoneNumber,
-        },
-    ]
-);
 
-annotate service.Customers with @(
-    UI.HeaderInfo : {
-        TypeName : 'Customer',
-        TypeNamePlural : 'Customers',
-        Title : {
-            $Type : 'UI.DataField',
-            Value : name
+using { UploadExcelSrv } from '../../srv/OrderUpload-Srv';
+
+// Annotations for Customers entity
+annotate UploadExcelSrv.Customers with @(
+    UI: {
+        SelectionFields: [name, email],
+        LineItem: [
+            {Value: ID, Label: '{i18n>ID}'},
+            {Value: name, Label: '{i18n>Name}'},
+            {Value: email, Label: '{i18n>Email}'},
+            {Value: phoneNumber, Label: '{i18n>PhoneNumber}'},
+        ],
+        HeaderInfo: {
+            TypeName: '{i18n>Customer}', TypeNamePlural: '{i18n>Customers}',
+            Title: {
+                Label: '{i18n>Name}',
+                Value: name
+            },
+            Description: {Value: email}
         },
-        Description : {
-            $Type : 'UI.DataField',
-            Value : email
+        Identification: [
+            {Value: name, Label: '{i18n>Name}'},
+            {Value: email, Label: '{i18n>Email}'},
+            {Value: phoneNumber, Label: '{i18n>PhoneNumber}'},
+        ],
+        HeaderFacets: [
+            {$Type: 'UI.ReferenceFacet', Label: '{i18n>GeneralInformation}', Target: '@UI.FieldGroup#GeneralInfo'},
+            {$Type: 'UI.ReferenceFacet', Label: '{i18n>Orders}', Target: 'orders/@UI.LineItem'},
+            {
+                $Type : 'UI.ReferenceFacet',
+                Label : '<sdfasfd',
+                ID : 'sdfasfd',
+                Target : '@UI.FieldGroup#sdfasfd',
+            },
+        ],
+        FieldGroup#GeneralInfo: {
+            Data: [
+                {Value: name},
+                {Value: email},
+                {Value: phoneNumber},
+            ]
         }
     },
-    UI.FieldGroup #GeneratedGroup1 : {
+    UI.FieldGroup #sdfasfd : {
         $Type : 'UI.FieldGroupType',
         Data : [
-            
             {
                 $Type : 'UI.DataField',
-                Label : 'Name',
+                Value : createdAt,
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : name,
+                Label : 'name',
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'Email',
-                Value : email,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'Phone Number',
-                Value : phoneNumber,
+                Value : orders.customers_ID,
+                Label : 'customers_ID',
             },
         ],
     },
-    UI.Facets : [
-        {
-            $Type : 'UI.ReferenceFacet',
-            ID : 'GeneratedFacet1',
-            Label : 'General Information',
-            Target : '@UI.FieldGroup#GeneratedGroup1',
-        },
-        // {
-        //     $Type : 'UI.ReferenceFacet',
-        //     ID : 'OrdersFacet',
-        //     Label : 'Orders',
-        //     Target : 'orders/@UI.LineItem',
-        // },
-    ]
-);
+) {
+    phoneNumber @UI.HiddenFilter:false;
+    email @UI.HiddenFilter:false;
+    ID @UI.Hidden;
+};
 
-// annotate service.Orders with @(
-//     UI.LineItem : [
-//         {
-//             $Type : 'UI.DataField',
-//             Label : 'Order ID',
-//             Value : ID,
-//         },
-//         {
-//             $Type : 'UI.DataField',
-//             Label : 'Order Date',
-//             Value : orderDate,
-//         },
-//         {
-//             $Type : 'UI.DataField',
-//             Label : 'Total Amount',
-//             Value : totalAmount,
-//         },
-//     ]
-// );
+// Annotations for Orders entity
+annotate UploadExcelSrv.Orders with @(
+    UI: {
+        LineItem: [
+            {Value: orderDate, Label: '{i18n>OrderDate}'},
+            {Value: totalAmount, Label: '{i18n>TotalAmount}'},
+
+        ],
+        Identification: [
+            {Value: orderDate, Label: '{i18n>OrderDate}'},
+            {Value: totalAmount, Label: '{i18n>TotalAmount}'},
+
+        ],
+        Facets: [
+            {$Type: 'UI.ReferenceFacet', Label: '{i18n>OrderDetails}', Target: '@UI.Identification'},
+            {$Type: 'UI.ReferenceFacet', Label: '{i18n>OrderItems}', Target: 'Items/@UI.LineItem'},
+        ]
+    }
+) {
+    orderDate @UI.HiddenFilter:false;
+    totalAmount @UI.HiddenFilter:false;
+    ID @UI.Hidden;
+};
+
+// Annotations for OrderItems entity
+annotate UploadExcelSrv.OrderItems with @(
+    UI: {
+        LineItem: [
+            {Value: quantity, Label: '{i18n>Quantity}'},
+            {Value: title, Label: '{i18n>ProductTitle}'},
+            {Value: price, Label: '{i18n>UnitPrice}'},
+        ],
+        Identification: [
+            {Value: quantity, Label: '{i18n>Quantity}'},
+            {Value: title, Label: '{i18n>Product}'},
+            {Value: price, Label: '{i18n>UnitPrice}'},
+        ],
+        Facets: [
+            {$Type: 'UI.ReferenceFacet', Label: '{i18n>OrderItems}', Target: '@UI.Identification'},
+        ]
+    }
+) {
+    quantity @UI.HiddenFilter:false;
+    ID @UI.Hidden;
+};
+
+

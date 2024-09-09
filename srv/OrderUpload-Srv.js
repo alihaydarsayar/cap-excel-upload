@@ -107,12 +107,12 @@ module.exports = async (srv) => {
   }
 
 
-  srv.on('READ', 'Customers', async (req) => {
-    console.log('Reading Customers');
-    const customers = await SELECT.from(Customers);
-    console.log(`Retrieved ${customers.length} customers`);
-    return customers;
-  });
+  // srv.on('READ', 'Customers', async (req) => {
+  //   console.log('Reading Customers');
+  //   const customers = await SELECT.from(Customers);
+  //   console.log(`Retrieved ${customers.length} customers`);
+  //   return customers;
+  // });
   
   // srv.on('READ', 'Orders', async (req) => {
   //   console.log('Reading Orders');
