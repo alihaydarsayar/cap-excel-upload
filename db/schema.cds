@@ -14,20 +14,20 @@ entity Orders : cuid, managed {
     orderDate   : DateTime;
     totalAmount : Decimal(10, 2);
     customers   : Association to Customers;
-    Items       : Composition of many OrderItems;
+    // Items       : Composition of many OrderItems;
     currency    : String; // Currency as a String for simplicity
 }
 
-entity OrderItems : cuid, managed {
-    product     : Association to Products;
-    quantity    : Integer;
-    title       : String; // Product title
-    price       : Decimal(10, 2);
-}
+// entity OrderItems : cuid, managed {
+//     product     : Association to Products;
+//     quantity    : Integer;
+//     title       : String; // Product title
+//     price       : Decimal(10, 2);
+// }
 
-entity Products : cuid, managed {
-    key ID    : String;
-    title     : String;
-    description: String;
-    price     : Decimal(10, 2);
-}
+// entity Products : cuid, managed {
+//     key ID    : String;
+//     title     : String;
+//     description: String;
+//     price     : Decimal(10, 2);
+// }

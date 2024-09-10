@@ -93,25 +93,25 @@ annotate UploadExcelSrv.Orders with @(
 };
 
 // Annotations for OrderItems entity
-annotate UploadExcelSrv.OrderItems with @(
-    UI: {
-        LineItem: [
-            {Value: quantity, Label: '{i18n>Quantity}'},
-            {Value: title, Label: '{i18n>ProductTitle}'},
-            {Value: price, Label: '{i18n>UnitPrice}'},
-        ],
-        Identification: [
-            {Value: quantity, Label: '{i18n>Quantity}'},
-            {Value: title, Label: '{i18n>Product}'},
-            {Value: price, Label: '{i18n>UnitPrice}'},
-        ],
-        Facets: [
-            {$Type: 'UI.ReferenceFacet', Label: '{i18n>OrderItems}', Target: '@UI.Identification'},
-        ]
-    }
-) {
-    quantity @UI.HiddenFilter:false;
-    ID @UI.Hidden;
-};
+// annotate UploadExcelSrv.OrderItems with @(
+//     UI: {
+//         LineItem: [
+//             {Value: quantity, Label: '{i18n>Quantity}'},
+//             {Value: title, Label: '{i18n>ProductTitle}'},
+//             {Value: price, Label: '{i18n>UnitPrice}'},
+//         ],
+//         Identification: [
+//             {Value: quantity, Label: '{i18n>Quantity}'},
+//             {Value: title, Label: '{i18n>Product}'},
+//             {Value: price, Label: '{i18n>UnitPrice}'},
+//         ],
+//         Facets: [
+//             {$Type: 'UI.ReferenceFacet', Label: '{i18n>OrderItems}', Target: '@UI.Identification'},
+//         ]
+//     }
+// ) {
+//     quantity @UI.HiddenFilter:false;
+//     ID @UI.Hidden;
+// };
 
 
