@@ -105,4 +105,21 @@ module.exports = async (srv) => {
       return -1; // Hata durumunda -1 döndür
     }
   }
+
+
+  // srv.on('READ', 'Customers', async (req) => {
+  //   console.log('Reading Customers');
+  //   const customers = await SELECT.from(Customers);
+  //   console.log(`Retrieved ${customers.length} customers`);
+  //   return customers;
+  // });
+  
+  // srv.on('READ', 'Orders', async (req) => {
+  //   console.log('Reading Orders');
+  //   const orders = await SELECT.from(Orders);
+  //   console.log(`Retrieved ${orders.length} orders`);
+  //   return orders;
+  // });
+
+  
 };
