@@ -5,7 +5,7 @@ using { UploadExcelSrv } from '../../srv/OrderUpload-Srv';
 // Annotations for Customers entity
 annotate UploadExcelSrv.Customers with @(
     UI: {
-        SelectionFields: [name, email],
+        SelectionFields: [name, email, phoneNumber],
         LineItem: [
             {Value: ID, Label: '{i18n>ID}'},
             {Value: name, Label: '{i18n>Name}'},
