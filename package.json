@@ -30,7 +30,8 @@
     "requires": {
       "[hybrid]": {
         "db": "hana"
-      }
+      }  ,
+      "auth": "xsuaa"
     
     },
     "sql": {
